@@ -1,0 +1,91 @@
+<script type='text/javascript'>
+    var blockHeight = 340;
+    var blockWidth = 370;
+    var nbColumns = 6;
+
+    function resetZoom() {
+        var wHeight = $(window).height();
+        var wWidth = $(window).width();
+
+        if (wWidth < (nbColumns * blockWidth)) {
+            var ratio = ((wWidth - 50) / (nbColumns * blockWidth)) * 100;
+            document.body.style.zoom = ratio + "%";
+        } else {
+            if (wHeight < (3 * blockHeight)) {
+                var ratio = ((wHeight - 20) / (3 * blockHeight)) * 100;
+                document.body.style.zoom = ratio + "%";
+            }
+        }
+    }
+
+    // Refresh page each 1hour to make sure counters are blocked
+    setTimeout(function() { window.location.href = window.location.href; }, 1000 * 60 * 60 * 1);
+
+    $(function () {
+        Dashing.widget_base_dimensions = [blockWidth, blockHeight]
+        Dashing.numColumns = nbColumns
+
+        resetZoom();
+
+        $( window ).resize(function() { resetZoom(); });
+    });
+</script>
+
+<% content_for :title do %> Selency.com - Cashflow <% end %>
+
+<div class="gridster">
+  <ul>
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_check_required"
+        data-view="Number"
+        data-title="Virements en attente d'approbation"
+        style="background-color:#56a6f9;"></div>
+    </li>
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_check_required_amount"
+        data-view="Number"
+        data-title="Virements en attente d'approbation"
+        data-prefix="€"
+        style="background-color:#56a6f9;"></div>
+    </li>
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_to_process"
+        data-view="Number"
+        data-title="Virements dans la file d'attente"
+        style="background-color:#f9ae56;"></div>
+    </li>
+    <!-- <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_to_process_amount"
+        data-view="Number"
+        data-title="Virements dans la file d'attente"
+        data-prefix="€"
+        style="background-color:#f9ae56;"></div>
+    </li> -->
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_processed_today"
+        data-view="Number"
+        data-title="Virements traités aujourd'hui"
+        style="background-color:#96bf48;"></div>
+    </li>
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="cashout_payments_processed_today_amount"
+        data-view="Number"
+        data-title="Virements traités aujourd'hui"
+        data-prefix="€"
+        style="background-color:#96bf48;"></div>
+    </li>
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div
+        data-id="order_products_transfer_requested"
+        data-view="Number"
+        data-title="Produits en virement demandé avec des virements en erreur"
+        style="background-color:#e43f3f;"></div>
+    </li>
+  </ul>
+</div>

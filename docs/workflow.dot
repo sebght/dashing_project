@@ -1,0 +1,17 @@
+digraph workflow {
+    subgraph cluster_tools {
+        "dashing/scripts";
+        label="tools";
+        graph[style="dotted"];
+    };
+
+    "dashing/scripts" -> "dashing/data" [label=" generates"];
+
+    subgraph cluster_dev_02 {
+        "dashing/data" -> "dashing/jobs" [label=" used by"]
+        "dashing/jobs" -> "dashing/widgets" [label=" feeds"];
+        "dashing/widgets" -> "dashing/dashboards" [label=" compose"];
+        label="               dev-02";
+        graph[style="dotted"];
+    }
+}

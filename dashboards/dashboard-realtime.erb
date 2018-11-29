@@ -1,0 +1,62 @@
+<script type='text/javascript'>
+    var blockHeight = 340;
+    var blockWidth = 370;
+    var nbColumns = 6;
+
+    function resetZoom() {
+        var wHeight = $(window).height();
+        var wWidth = $(window).width();
+
+        if (wWidth < (nbColumns * blockWidth)) {
+            var ratio = ((wWidth - 50) / (nbColumns * blockWidth)) * 100;
+            document.body.style.zoom = ratio + "%";
+        } else {
+            if (wHeight < (3 * blockHeight)) {
+                var ratio = ((wHeight - 20) / (3 * blockHeight)) * 100;
+                document.body.style.zoom = ratio + "%";
+            }
+        }
+    }
+
+    // Refresh page each 1hour to make sure counters are blocked
+    setTimeout(function() { window.location.href = window.location.href; }, 1000 * 60 * 60 * 1);
+
+    $(function () {
+        var md = new MobileDetect(window.navigator.userAgent);
+        var isMobile = false;
+
+        if (md.mobile() || md.phone() || md.tablet()) {
+            isMobile = true;
+        }
+
+        Dashing.widget_base_dimensions = [ blockWidth, blockHeight ];
+        Dashing.numColumns = isMobile ? 3 : nbColumns;
+
+        if (!isMobile) {
+            resetZoom();
+            $( window ).resize(function() { resetZoom(); });
+        }
+    });
+</script>
+
+<% content_for :title do %> Selency.com - Real time <% end %>
+
+<div class="gridster">
+  <ul>
+    <!-- li data-col="1" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="picture" data-view="BigImage" data-image="https://assets.selency.co/img/main-logo.png" style="background-color:#ffffff;"></div>
+    </li -->
+
+    <!-- li data-col="1" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-view="Countdown" data-title="Pimp PARTY" data-end="26-Oct-2017 20:00:00"></div>
+    </li -->
+
+    <!-- ====== -->
+    <!-- ORDERS -->
+    <!-- ====== -->
+
+    <li data-col="1" data-row="1" data-sizex="4" data-sizey="1">
+      <div data-id="orders_realtime" data-view="SelencyHoursGraph" data-title="Multi Convergence"></div>
+    </li>
+  </ul>
+</div>

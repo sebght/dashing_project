@@ -1,0 +1,62 @@
+<script type='text/javascript'>
+    var blockHeight = 340;
+    var blockWidth = 370;
+    var nbColumns = 6;
+
+    function resetZoom() {
+        var wHeight = $(window).height();
+        var wWidth = $(window).width();
+
+        if (wWidth < (nbColumns * blockWidth)) {
+            var ratio = ((wWidth - 50) / (nbColumns * blockWidth)) * 100;
+            document.body.style.zoom = ratio + "%";
+        } else {
+            if (wHeight < (3 * blockHeight)) {
+                var ratio = ((wHeight - 20) / (3 * blockHeight)) * 100;
+                document.body.style.zoom = ratio + "%";
+            }
+        }
+    }
+
+    // Refresh page each 1hour to make sure counters are blocked
+    setTimeout(function() { window.location.href = window.location.href; }, 1000 * 60 * 60 * 1);
+
+    $(function () {
+        Dashing.widget_base_dimensions = [blockWidth, blockHeight]
+        Dashing.numColumns = nbColumns
+
+        resetZoom();
+
+        $( window ).resize(function() { resetZoom(); });
+    });
+</script>
+
+<% content_for :title do %> Selency.com - Products <% end %>
+
+<div class="gridster">
+  <ul>
+    <li data-col="1" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="picture" data-view="BigImage" data-image="https://assets.selency.co/img/main-logo.png" style="background-color:#ffffff;"></div>
+    </li>
+
+    <!-- ===== -->
+    <!-- MONGO -->
+    <!-- ===== -->
+
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="mongo_connected_clients_primary" data-view="MongoClients" data-title="MongoDb clients 01b"></div>
+    </li>
+
+    <li data-col="3" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="mongo_network_info_primary" data-view="MongoNetwork" data-title="MongoDb network 01b"></div>
+    </li>
+
+    <li data-col="2" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="mongo_connected_clients_secondary" data-view="MongoClients" data-title="MongoDb clients 01c"></div>
+    </li>
+
+    <li data-col="3" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="mongo_network_info_secondary" data-view="MongoNetwork" data-title="MongoDb network 01c"></div>
+    </li>
+  </ul>
+</div>

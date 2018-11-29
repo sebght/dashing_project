@@ -1,0 +1,37 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color: #73A6DC;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-text styles
+// ----------------------------------------------------------------------------
+.widget-timeline {
+
+  background-color: $background-color;
+  //padding-top: 50px;
+  //padding-bottom: 60px;
+
+  .title {
+    color: $title-color;
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .event-description {
+    fill: white;
+    font-size: 14px;
+  }
+
+  .event-description-date {
+    fill: white;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,139 @@
+<script type='text/javascript'>
+    var blockHeight = 340;
+    var blockWidth = 370;
+    var nbColumns = 6;
+
+    function resetZoom() {
+        var wHeight = $(window).height();
+        var wWidth = $(window).width();
+
+        if (wWidth < (nbColumns * blockWidth)) {
+            var ratio = ((wWidth - 50) / (nbColumns * blockWidth)) * 100;
+            document.body.style.zoom = ratio + "%";
+        } else {
+            if (wHeight < (3 * blockHeight)) {
+                var ratio = ((wHeight - 20) / (3 * blockHeight)) * 100;
+                document.body.style.zoom = ratio + "%";
+            }
+        }
+    }
+
+    // Refresh page each 1hour to make sure counters are blocked
+    setTimeout(function() { window.location.href = window.location.href; }, 1000 * 60 * 60 * 1);
+
+    $(function () {
+        var md = new MobileDetect(window.navigator.userAgent);
+        var isMobile = false;
+
+        if (md.mobile() || md.phone() || md.tablet()) {
+            isMobile = true;
+        }
+
+        Dashing.widget_base_dimensions = [ blockWidth, blockHeight ];
+        Dashing.numColumns = isMobile ? 3 : nbColumns;
+
+        if (isMobile) {
+            Dashing.gridsterLayout('[{"col":1,"row":1,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":1,"size_y":1},{"col":3,"row":1,"size_x":1,"size_y":1},{"col":2,"row":2,"size_x":2,"size_y":1},{"col":2,"row":4,"size_x":1,"size_y":1},{"col":3,"row":4,"size_x":1,"size_y":1},{"col":2,"row":5,"size_x":2,"size_y":1},{"col":1,"row":3,"size_x":1,"size_y":1},{"col":2,"row":3,"size_x":1,"size_y":1},{"col":3,"row":3,"size_x":1,"size_y":1},{"col":1,"row":6,"size_x":1,"size_y":1},{"col":1,"row":5,"size_x":1,"size_y":1},{"col":2,"row":6,"size_x":2,"size_y":1},{"col":1,"row":4,"size_x":1,"size_y":1}]');
+        }
+
+        resetZoom();
+        $( window ).resize(function() { resetZoom(); });
+    });
+</script>
+
+<% content_for :title do %> Selency.com - Selection <% end %>
+
+<div class="gridster">
+  <ul>
+    <!-- li data-col="1" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="picture" data-view="BigImage" data-image="https://assets.selency.co/img/main-logo.png" style="background-color:#ffffff;"></div>
+    </li -->
+
+    <!-- li data-col="1" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-view="Countdown" data-title="Pimp PARTY" data-end="26-Oct-2017 20:00:00"></div>
+    </li -->
+      
+    <!-- ================== -->
+    <!-- PARTIE PERFORMANCE -->
+    <!-- ================== -->
+      
+    <li data-col="1" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="month_accepted_products" data-view="SelencyPeriod" style="background-color: #379392;" ></div>
+    </li>
+      
+    <li data-col="2" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="week_accepted_products" data-view="SelencyPeriod" style="background-color: #379392;" ></div>
+    </li>
+      
+    <li data-col="2" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="week_pinned_products" data-view="SelencyNumber" style="background-color: #379392;"></div>
+    </li>
+      
+    <li data-col="1" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="week_awaiting_accepted_products" data-view="SelencyNumber" style="background-color: #4FB0C6;"></div>
+    </li>
+      
+    <li data-col="1" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="avg_price_accepted_this_week" data-view="SelencyNumber" style="background-color: #4FB0C6;"></div>
+    </li>
+      
+    <li data-col="3" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="week_designed_accepted_products" data-view="SelencyNumber" style="background-color: #4FB0C6;"></div>
+    </li>
+      
+    <li data-col="3" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="GMV_week_pinned_products" data-view="SelencyNumber" data-suffix="€" style="background-color: #379392;"></div>
+    </li>
+      
+    <li data-col="2" data-row="2" data-sizex="2" data-sizey="1">
+      <div data-id="taux_rejet_this_week" data-view="ConversionRate" data-title="Taux de Rejet cette semaine" data-suffix="%" style="background-color: #8CD790;"></div>
+    </li>
+      
+
+    <!-- ==================== -->
+    <!-- PARTIE FONCTIONNELLE -->
+    <!-- ==================== -->
+
+    <li data-col="4" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="pending_review_now" data-title="En Attente de Modération" data-view="Number" style="background-color: #4F86C6;"></div>
+    </li>
+
+    <li data-col="4" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="today_accepted_products" data-view="SelencyNumber" style="background-color: #379392;"></div>
+    </li>
+      
+    <li data-col="5" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="today_rejected_products" data-view="SelencyNumber" style="background-color: #8CD790;"></div>
+    </li>
+      
+    <li data-col="5" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="today_awaiting_products" data-view="SelencyNumber" style="background-color: #8CD790;"></div>
+    </li>
+      
+    <li data-col="5" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="new_pinned_products_now" data-title="New Pinned" data-view="Number" style="background-color: #4F86C6;"></div>
+    </li>
+    
+    <li data-col="6" data-row="1" data-sizex="1" data-sizey="1">
+      <div data-id="today_pendingexp_products" data-view="SelencyNumber" style="background-color: #8CD790;"></div>
+    </li>
+      
+    <li data-col="6" data-row="2" data-sizex="1" data-sizey="1">
+      <div data-id="pendingExpAccepted" data-view="SelencyNumber" style="background-color: #8CD790;"></div>
+    </li>
+      
+    <li data-col="4" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-id="awaiting_crop_now" data-title="En attente de crop" data-view="Number" style="background-color: #4F86C6;"></div>
+    </li>
+
+    
+    <li data-col="6" data-row="3" data-sizex="1" data-sizey="1">
+      <div data-view="Countdown" data-title="Départ de Séb" style="background-color: #EE7785;" data-end="23-Feb-2018 18:30:00"></div>
+<!--      <div data-id="instadash" data-view="Instadash"></div>-->
+<!--
+      <div data-id="picture" data-view="BigImage" data-image="https://assets.selency.co/img/main-logo.png" style="background-color:#ffffff;"></div>
+        https://selency.imgix.net/
+-->
+    </li>
+  </ul>
+</div>

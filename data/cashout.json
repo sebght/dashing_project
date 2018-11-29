@@ -1,0 +1,28 @@
+{
+        "update" : "2018-01-31T17:09:11.041Z",
+        "orderProductsTransferRequested" : [
+                {
+                        "_id" : null,
+                        "count" : 618
+                }
+        ],
+        "cashoutPayments" : [
+                {
+                        "_id" : "check_required",
+                        "count" : 5,
+                        "value" : 3087.01
+                },
+                {
+                        "_id" : "to_process",
+                        "count" : 4,
+                        "value" : 253.92
+                }
+        ],
+        "cashoutPaymentsProcessedToday" : [
+                {
+                        "_id" : null,
+                        "count" : 3,
+                        "value" : 95
+                }
+        ]
+}

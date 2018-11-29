@@ -1,0 +1,11 @@
+<h1 class="title" data-bind="title | raw"></h1>
+
+<h2 class="value" data-bind="current | shortenedNumber | prepend prefix | append suffix"></h2>
+
+<p class="change-rate">
+    <span data-bind="last | shortenedNumber | prepend prefix | append suffix"></span>
+</p>
+
+<p class="more-info" data-bind="moreinfo"></p>
+
+<p class="updated-at" data-bind="updatedAtMessage"></p>
